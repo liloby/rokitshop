@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer.page-footer {
+    padding-top: 0;
+    text-align: right;
+}
+
+.nav-wrapper2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.userinfo-box {
+    border: 2px solid black;
+    text-align: center;
+}
+
+.userinfo {
+    text-align: center;
+}

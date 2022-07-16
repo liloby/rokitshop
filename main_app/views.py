@@ -9,6 +9,9 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
+def profile(request):
+  return render(request, 'profile.html')
+
 def signup(request):
   error_message = ''
   if request.method == 'POST':

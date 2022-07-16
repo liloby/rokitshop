@@ -116,7 +116,7 @@ USE_I18N = True
 
 STATIC_URL = 'static/'
 
-LOGIN_REDIRECT_URL = '/items/'
+LOGIN_REDIRECT_URL = '/about/'
 
 LOGOUT_REDIRECT_URL = '/'
 # Default primary key field type

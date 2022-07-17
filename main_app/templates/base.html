@@ -25,7 +25,7 @@
                     </li>
                 {% if user.is_authenticated %}
                 <li class="right"><a href="{% url 'profile' %}">Profile</a></li>
-                    <li class="right"><a href="">Sell an Item</a></li>
+                    <li class="right"><a href="{% url 'items_create' %}">Sell an Item</a></li>
                     <li class="right"><a href="{% url 'logout' %}">Log Out</a></li>
                 {% else %}
                     <li class="right"><a href="{% url 'signup' %}">Sign Up</a></li>

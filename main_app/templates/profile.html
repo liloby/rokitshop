@@ -7,7 +7,7 @@
         <div>User Info</div>
         <div>{{ user }}</div>
         <div>Listed Items:</div>
-        <div>Member Since </div>
+        <div>Member Since: {{ user.profile.signup_date|date:"M d, Y" }}</div>
     </div>
     <div class="listed-container">
         <div>Listed Items</div>

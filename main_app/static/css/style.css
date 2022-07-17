@@ -2,6 +2,9 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background: url('../images/background3.jpg');
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 main {
@@ -13,16 +16,61 @@ footer.page-footer {
     text-align: right;
 }
 
+.nav-wrapper, nav {
+    background: linear-gradient(0deg, rgba(0, 242, 255, 0.5), rgba(0, 114, 235, 0.7));
+}
+
+.page-footer {
+    background: linear-gradient(180deg, rgba(0, 242, 255, 0.5), rgba(0, 114, 235, 0.7));
+}
+
+.page-footer .footer-text {
+    font-weight: bold;
+}
+
 .nav-wrapper2 {
     display: flex;
     justify-content: space-between;
 }
 
+.nav-wrapper2 li a{
+    font-style: italic;
+    font-weight: bold;
+    font-size: large;
+}
+
 .userinfo-box {
-    border: 2px solid black;
+    border: 2px solid rgb(220, 193, 19);
     text-align: center;
+    color: white;
 }
 
 .userinfo {
     text-align: center;
+}
+
+.listed-container {
+    margin-top: 1rem;
+    border: 2px solid rgb(220, 193, 19);
+    text-align: center;
+    height: 200px;
+    color: white;
+}
+
+.unlisted-container {
+    margin-top: 1rem;
+    border: 2px solid rgb(220, 193, 19);
+    text-align: center;
+    height: 200px;
+    color: white;
+}
+
+h1 {
+    color: white;
+}
+
+.profile-container {
+    border: 2px solid rgb(220, 193, 19);
+    padding: 5rem;
+    background: linear-gradient(180deg, rgba(78, 78, 159, 0.7), rgba(144, 188, 203, 0.85));
 }

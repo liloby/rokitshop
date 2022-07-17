@@ -37,6 +37,8 @@ footer.page-footer {
     font-style: italic;
     font-weight: bold;
     font-size: large;
+    width: 160px;
+    text-align: center;
 }
 
 .userinfo-box {
@@ -74,3 +76,4 @@ h1 {
     padding: 5rem;
     background: linear-gradient(180deg, rgba(78, 78, 159, 0.7), rgba(144, 188, 203, 0.85));
 }
+

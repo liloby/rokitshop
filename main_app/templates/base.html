@@ -1,13 +1,11 @@
-
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cat Collector</title>
+    <title>RokitShop</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -16,15 +14,18 @@
     <header class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <ul>
-                    <li><a href="" class="center brand-logo">RokitShop</a></li>
-                </ul>
-                <ul>
-                  <li><a href="{% url 'about' %}">About</a></li>
+                <ul class="nav-wrapper2">
+                    <li class="large-font"><a href="{% url 'about' %}">About</a></li>
                     <li class="right"><a href="">View All Items</a></li>
+                    <li class="right"><a href="">Best Deals</a></li>
+                    <li class="logo-center">
+                        <a href="{% url 'about' %}">
+                        <img src="{% static 'images/ShopLogo.png' %}" width="64px" alt="">
+                    </a>
+                    </li>
                 {% if user.is_authenticated %}
                     <li class="right"><a href="">Create an item</a></li>
-                    <li class="right"><a href="">Profile</a></li>
+                    <li class="right"><a href="{% url 'profile' %}">Profile</a></li>
                     <li class="right"><a href="{% url 'logout' %}">Log Out</a></li>
                 {% else %}
                     <li class="right"><a href="{% url 'signup' %}">Sign Up</a></li>
@@ -39,7 +40,7 @@
         {% endblock %}
     </main>
   	<footer class="page-footer">
-       <div class="right">All Rights Reserved, &copy; 2022 RokitShop &nbsp;</div>
+       <div class="right footer-text">All Rights Reserved, &copy; 2022 RokitShop &nbsp;</div>
     </footer>
 </body>
 </html>

@@ -1,7 +1,11 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
+from .models import Item
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -34,3 +38,11 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+def items_index(request):
+  items = Item.objects.all()
+  return render(request, 'items/index.html', { 'items': items })
+
+class ItemCreate(LoginRequiredMixin, CreateView):
+  model = Item
+  fields = ['name', 'photo', 'quantity', 'description', 'date']

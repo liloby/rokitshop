@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<h1 class="center">All Items For Sale</h1>
+<div class="items-container">
 {% for item in items %}
-  <div class="card">
+  <div class="card item-card">
    <a href="{% url 'detail' item.id %}">
-    <div class="card-content">
+    <div class="card-content center card-content-hover">
       <span class="card-title">{{ item.name }}</span>
       <p>Quantity: {{ item.quantity }}</p>
       <p>Description: {{ item.description }}</p>
@@ -12,7 +14,7 @@
      </div>
     </a>
   </div>
-
-{% endfor %}
+  {% endfor %}
+</div>
 
 {% endblock %}

@@ -1,20 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
     
-    <h1>Item Details</h1>
-    
-    <div class="row">
-      <div class="col s6">
-        <div class="card">
-          <div class="card-content">
+    <h1 class="center">Item Details</h1>
+        <div class="card item-detail-card center">
+          <div class="card-content item-detail-content">
             <span class="card-title">{{ item.name }}</span>
             <p>Quantity: {{ item.quantity }}</p>
             <p>Description: {{ item.description|linebreaks }}</p>
             <p>Posted: {{ item.date }}</p>
           </div>
         </div>
-     <div>
-    <div>   
    </h1>
 
    {% endblock %}

@@ -11,7 +11,7 @@
     </div>
 
  <div class="listed-container">
-         <div>Listed Items: {{ listed_count }}</div>
+         <div>Listed Items: {{ item_listed.count }}</div>
          <div class="profile-listed-item-container">
          {% for item in item_listed %}
          <div class="profile-listed-item">
@@ -21,7 +21,7 @@
     </div>
 </div>
     <div class="unlisted-container">
-        <div>Unlisted Items:</div>
+        <div>Unlisted Items: {{ item_unlisted.count }}</div>
         <div class="profile-unlisted-item-container">
         {% for item in item_unlisted %}
         <div class="profile-unlisted-item">

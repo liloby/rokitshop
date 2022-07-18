@@ -11,7 +11,7 @@
     </div>
 
  <div class="listed-container">
-         <div>Listed Items:</div>
+         <div>Listed Items: {{ listed_count }}</div>
          {% for item in item_listed %}
          <div class="profile-listed-item-container">
          <div class="profile-listed-item">
@@ -26,9 +26,21 @@
         <div class="profile-unlisted-item-container">
         <div class="profile-unlisted-item">
          <p>{{ item.name }}</p>
-         <button>Update</button>
-         <button>Post</button>
-         <button>Delete</button>
+         {% comment %} <button>Update</button>
+         <button>Post</button> {% endcomment %}
+         {% comment %} <button <a href="{% url 'unlisted_delete' item.id %}">Delete</button> {% endcomment %}
+            <div class="card-action">
+                <form action="{% url 'unlisted_delete' item.id %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" class="btn">Delete</button>
+                </form>
+              </div>
+              <div class="card-action">
+                <form action="{% url 'unlisted_update' item.id %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" class="btn">Update</button>
+                </form>
+              </div>
         </div>
     </div>
          {% endfor %}

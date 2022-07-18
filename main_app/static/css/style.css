@@ -59,7 +59,6 @@ footer.page-footer {
     margin-top: 1rem;
     border: 2px solid rgb(220, 193, 19);
     text-align: center;
-    height: 200px;
     color: white;
 }
 
@@ -67,7 +66,6 @@ footer.page-footer {
     margin-top: 1rem;
     border: 2px solid rgb(220, 193, 19);
     text-align: center;
-    height: 200px;
     color: white;
 }
 
@@ -83,20 +81,24 @@ h1 {
 
 .profile-listed-item {
     border: 1px solid rgb(26, 255, 0);
+    margin-left: 1rem;
 }
 
 .profile-listed-item-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 1rem;
 }
 
 .profile-unlisted-item {
     border: 1px solid red;
+    margin-left: 1rem;
 }
 
 .profile-unlisted-item-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 1rem;
 }
 
 .items-container {

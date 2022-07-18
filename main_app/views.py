@@ -39,17 +39,17 @@ class ItemUpdate(UpdateView):
 #   return render(request, 'profile.html', {'posted': posted })
 
 def ajax_change_status(request):
-  posted=request.GET.get('posted', False)
-  item_id = request.GET.get('item_id', False)
-  item = Item.objects.get(pk=item_id)
-  try:
-      item.posted = posted
-      item.save()
-      return JsonResponse({"success": True})
-  except Exception as e:
-      return JsonResponse({"success": False})
-  return JsonResponse(data)
-
+    active = request.GET.get('posted', False)
+    item_id = request.GET.get('item_id', False)
+    # first you get your Job model
+    item = Item.objects.get(pk=item_id)
+    try:
+        item.posted = active
+        item.save()
+        return JsonResponse({"success": True})
+    except Exception as e:
+        return JsonResponse({"success": False})
+    return JsonResponse(data)
 
 
 def signup(request):

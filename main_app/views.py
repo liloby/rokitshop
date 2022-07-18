@@ -19,7 +19,10 @@ def about(request):
   return render(request, 'about.html')
 
 def profile(request):
-  return render(request, 'profile.html')
+  item_listed = Item.objects.all().filter(posted=True)
+  item_unlisted = Item.objects.all().filter(posted=False)
+  return render(request, 'profile.html', {'item_listed':  item_listed,
+    'item_unlisted': item_unlisted})
 
 def signup(request):
   error_message = ''

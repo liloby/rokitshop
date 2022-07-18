@@ -77,3 +77,10 @@ h1 {
     background: linear-gradient(180deg, rgba(78, 78, 159, 0.7), rgba(144, 188, 203, 0.85));
 }
 
+.profile-listed-item {
+    border: 1px solid rgb(26, 255, 0);
+}
+
+.profile-unlisted-item {
+    border: 1px solid red;
+}

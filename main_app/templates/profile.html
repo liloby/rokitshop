@@ -14,11 +14,19 @@
 
  <div class="listed-container">
          <div>Listed Items:</div>
-               <div>{{ item_listed.name }}</div>
+         {% for item in item_listed %}
+         <div class="profile-listed-item">
+         <p>{{ item.name }}</p>
+        </div>
+         {% endfor %}
     </div>
     <div class="unlisted-container">
         <div>Unlisted Items:</div>
-        <div>{{ item_unlisted }}</div>
+        {% for item in item_unlisted %}
+        <div class="profile-unlisted-item">
+         <p>{{ item.name }}</p>
+        </div>
+         {% endfor %}
     </div>  
 </div>
 {% endblock %}

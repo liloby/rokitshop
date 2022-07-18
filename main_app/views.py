@@ -55,11 +55,7 @@ class ItemCreate(LoginRequiredMixin, CreateView):
     return super().form_valid(form)
 
 def items_detail(request, item_id):
-  item_listed = Item.objects.all().filter(posted=True)
-  item_unlisted = Item.objects.all().filter(posted=False)
   item = Item.objects.get(id=item_id)
   return render(request, 'items/detail.html', {
     'item': item, 
-    'item_listed':  item_listed,
-    'item_unlisted': item_unlisted
      })

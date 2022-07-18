@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from .models import Item
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -21,36 +21,8 @@ def about(request):
 def profile(request):
   item_listed = Item.objects.all().filter(posted=True)
   item_unlisted = Item.objects.all().filter(posted=False)
-  listed_count = Item.objects.all().filter(posted=True).count()
   return render(request, 'profile.html', {'item_listed':  item_listed,
     'item_unlisted': item_unlisted})
-  
-class ItemDelete(DeleteView):
-  model = Item
-  success_url = '/profile/' 
-  
-class ItemUpdate(UpdateView):
-  model = Item
-  fields = ['name', 'description']
-  
-# def post_unlisted_item(request):
-#   posted=Item.objects.all().filter(posted=False).update(posted=True)
-#   posted.save()
-#   return render(request, 'profile.html', {'posted': posted })
-
-def ajax_change_status(request):
-    active = request.GET.get('posted', False)
-    item_id = request.GET.get('item_id', False)
-    # first you get your Job model
-    item = Item.objects.get(pk=item_id)
-    try:
-        item.posted = active
-        item.save()
-        return JsonResponse({"success": True})
-    except Exception as e:
-        return JsonResponse({"success": False})
-    return JsonResponse(data)
-
 
 def signup(request):
   error_message = ''
@@ -77,13 +49,28 @@ def items_index(request):
 
 class ItemCreate(LoginRequiredMixin, CreateView):
   model = Item
-  fields = ['name', 'quantity', 'description', 'min_bid']
+  fields = ['name', 'quantity', 'description']
   def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
+
+class ItemDelete(DeleteView):
+  model = Item
+  success_url = '/profile/' 
+
+class ItemUpdate(UpdateView):
+  model = Item
+  fields = ['name', 'description']
 
 def items_detail(request, item_id):
   item = Item.objects.get(id=item_id)
   return render(request, 'items/detail.html', {
     'item': item, 
      })
+
+def add_post(request, item_id):
+  item = Item.objects.get(id=item_id)
+  print(request, item)
+  item.posted = True
+  item.save()
+  return redirect('profile/', item_id=item_id)

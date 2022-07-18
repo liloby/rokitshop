@@ -5,9 +5,10 @@
         <div class="card item-detail-card center">
           <div class="card-content item-detail-content">
             <span class="card-title">{{ item.name }}</span>
+            <p>Starting Bid: ${{ item.min_bid }}</p>
             <p>Quantity: {{ item.quantity }}</p>
             <p>Description: {{ item.description|linebreaks }}</p>
-            <p>Posted: {{ item.date }}</p>
+            <p>Posted on: {{ item.date }}</p>
           </div>
         </div>
    </h1>

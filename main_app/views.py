@@ -73,4 +73,4 @@ def add_post(request, item_id):
   print(request, item)
   item.posted = True
   item.save()
-  return redirect('profile', item_id=item_id)
+  return redirect('index', item_id=item_id)

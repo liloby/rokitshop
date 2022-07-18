@@ -11,20 +11,14 @@
         {% comment %} <div>Member Since: {{ user.profile.signup_date|date:"M d, Y" }}</div> {% endcomment %}
         <div>Member Since: {{ user.date_joined|date:"M d, Y" }}</div>
     </div>
-    <div class="listed-container">
-         <div>Listed Items: {{ user.date_joined|date:"M d, Y" }} </div>
+
+ <div class="listed-container">
+         <div>Listed Items:</div>
+               <div>{{ item_listed.name }}</div>
     </div>
     <div class="unlisted-container">
-        <div>Unlisted Items: {{ user.date_joined|date:"M d, Y" }}</div>
-    </div> 
-    {% comment %} {% if listed_items %}
-       <div class="listed-container">
-        <div>Listed_items: {{ listed_items }} </div>
-   </div>
-   {% else %}
-   <div class="unlisted-container">
-       <div>Unlisted Items: None</div>
-   </div>
-   {% endif %} {% endcomment %}
+        <div>Unlisted Items:</div>
+        <div>{{ item_unlisted }}</div>
+    </div>  
 </div>
 {% endblock %}

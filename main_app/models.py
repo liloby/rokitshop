@@ -37,6 +37,5 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
     
-def listed_items(self):
-    return self.user.item_set.filter(posted=True)
+
 

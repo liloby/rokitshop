@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>View All Items</h1>
-
 {% for item in items %}
   <div class="card">
    <a href="{% url 'detail' item.id %}">

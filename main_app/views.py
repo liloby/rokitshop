@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views.generic.edit import CreateView
+from django.views.generic import ListView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -45,4 +46,13 @@ def items_index(request):
 
 class ItemCreate(LoginRequiredMixin, CreateView):
   model = Item
-  fields = ['name', 'photo', 'quantity', 'description', 'date']
+  fields = ['name', 'quantity', 'description']
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
+def items_detail(request, item_id):
+  item = Item.objects.get(id=item_id)
+  return render(request, 'items/detail.html', {
+    'item': item, 
+     })

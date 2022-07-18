@@ -6,8 +6,6 @@
     <div class="userinfo-box">
         <div>User Info</div>
         <div>{{ user }}</div>
-        <div>Listed Items:</div>
-        <div>{{ item.posted }}:</div>
         {% comment %} <div>Member Since: {{ user.profile.signup_date|date:"M d, Y" }}</div> {% endcomment %}
         <div>Member Since: {{ user.date_joined|date:"M d, Y" }}</div>
     </div>
@@ -15,17 +13,24 @@
  <div class="listed-container">
          <div>Listed Items:</div>
          {% for item in item_listed %}
+         <div class="profile-listed-item-container">
          <div class="profile-listed-item">
          <p>{{ item.name }}</p>
         </div>
+    </div>
          {% endfor %}
     </div>
     <div class="unlisted-container">
         <div>Unlisted Items:</div>
         {% for item in item_unlisted %}
+        <div class="profile-unlisted-item-container">
         <div class="profile-unlisted-item">
          <p>{{ item.name }}</p>
+         <button>Update</button>
+         <button>Post</button>
+         <button>Delete</button>
         </div>
+    </div>
          {% endfor %}
     </div>  
 </div>

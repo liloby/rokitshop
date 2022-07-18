@@ -82,6 +82,7 @@ h1 {
 .profile-listed-item {
     border: 1px solid rgb(26, 255, 0);
     margin-left: 1rem;
+    margin-top: 1rem;
 }
 
 .profile-listed-item-container {
@@ -93,6 +94,7 @@ h1 {
 .profile-unlisted-item {
     border: 1px solid red;
     margin-left: 1rem;
+    margin-top: 1rem;
 }
 
 .profile-unlisted-item-container {

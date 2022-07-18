@@ -81,6 +81,16 @@ h1 {
     border: 1px solid rgb(26, 255, 0);
 }
 
+.profile-listed-item-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
 .profile-unlisted-item {
     border: 1px solid red;
+}
+
+.profile-unlisted-item-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }

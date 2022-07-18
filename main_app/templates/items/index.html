@@ -4,6 +4,7 @@
 <h1 class="center">All Items For Sale</h1>
 <div class="items-container">
 {% for item in items %}
+{% if item.posted == True %}
   <div class="card item-card">
    <a href="{% url 'detail' item.id %}">
     <div class="card-content center card-content-hover">
@@ -15,6 +16,7 @@
      </div>
     </a>
   </div>
+  {% endif %}
   {% endfor %}
 </div>
 

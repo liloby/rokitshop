@@ -11,7 +11,7 @@ class Item(models.Model):
     name = models.CharField(max_length=100)
     photo = models.CharField(max_length=1000)
     quantity = models.IntegerField()
-    date = models.DateField('Upload Date')
+    date = models.DateField(('Upload Date'), auto_now_add=True)
     description = models.TextField(max_length=250)
     posted = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -27,8 +27,7 @@ class Profile(models.Model):
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
     location = models.CharField(null=True, max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    signup_date = models.DateTimeField(('Signup Date'), auto_now_add=True)
-    
+        
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
@@ -37,4 +36,6 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+    
+
 

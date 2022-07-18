@@ -7,13 +7,18 @@
         <div>User Info</div>
         <div>{{ user }}</div>
         <div>Listed Items:</div>
-        <div>Member Since: {{ user.profile.signup_date|date:"M d, Y" }}</div>
+        <div>{{ item.posted }}:</div>
+        {% comment %} <div>Member Since: {{ user.profile.signup_date|date:"M d, Y" }}</div> {% endcomment %}
+        <div>Member Since: {{ user.date_joined|date:"M d, Y" }}</div>
     </div>
-    <div class="listed-container">
-        <div>Listed Items</div>
+
+ <div class="listed-container">
+         <div>Listed Items:</div>
+               <div>{{ item_listed.name }}</div>
     </div>
     <div class="unlisted-container">
-        <div>Unlisted Items</div>
-    </div>
+        <div>Unlisted Items:</div>
+        <div>{{ item_unlisted }}</div>
+    </div>  
 </div>
 {% endblock %}

@@ -49,7 +49,7 @@ def items_index(request):
 
 class ItemCreate(LoginRequiredMixin, CreateView):
   model = Item
-  fields = ['name', 'quantity', 'description']
+  fields = ['name', 'quantity', 'description', 'min_bid']
   def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
@@ -73,4 +73,4 @@ def add_post(request, item_id):
   print(request, item)
   item.posted = True
   item.save()
-  return redirect('profile/', item_id=item_id)
+  return redirect('profile', item_id=item_id)

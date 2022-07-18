@@ -15,6 +15,7 @@ class Item(models.Model):
     description = models.TextField(max_length=250)
     posted = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    min_bid = models.IntegerField()
 
     def __str__(self):
         return self.name
@@ -37,5 +38,12 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
     
+class Bid(models.Model):
+    price = models.IntegerField()
+    date = models.DateField(('Upload Date'), auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.price
 

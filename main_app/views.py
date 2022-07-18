@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import ListView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .models import Item
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -21,8 +21,36 @@ def about(request):
 def profile(request):
   item_listed = Item.objects.all().filter(posted=True)
   item_unlisted = Item.objects.all().filter(posted=False)
+  listed_count = Item.objects.all().filter(posted=True).count()
   return render(request, 'profile.html', {'item_listed':  item_listed,
     'item_unlisted': item_unlisted})
+  
+class ItemDelete(DeleteView):
+  model = Item
+  success_url = '/profile/' 
+  
+class ItemUpdate(UpdateView):
+  model = Item
+  fields = ['name', 'description']
+  
+# def post_unlisted_item(request):
+#   posted=Item.objects.all().filter(posted=False).update(posted=True)
+#   posted.save()
+#   return render(request, 'profile.html', {'posted': posted })
+
+def ajax_change_status(request):
+  posted=request.GET.get('posted', False)
+  item_id = request.GET.get('item_id', False)
+  item = Item.objects.get(pk=item_id)
+  try:
+      item.posted = posted
+      item.save()
+      return JsonResponse({"success": True})
+  except Exception as e:
+      return JsonResponse({"success": False})
+  return JsonResponse(data)
+
+
 
 def signup(request):
   error_message = ''

@@ -18,9 +18,10 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
+@login_required
 def profile(request):
-  item_listed = Item.objects.all().filter(posted=True)
-  item_unlisted = Item.objects.all().filter(posted=False)
+  item_listed = Item.objects.all().filter(posted=True).filter(user=request.user)
+  item_unlisted = Item.objects.all().filter(posted=False).filter(user=request.user)
   return render(request, 'profile.html', {'item_listed':  item_listed,
     'item_unlisted': item_unlisted})
 
@@ -54,11 +55,11 @@ class ItemCreate(LoginRequiredMixin, CreateView):
     form.instance.user = self.request.user
     return super().form_valid(form)
 
-class ItemDelete(DeleteView):
+class ItemDelete(LoginRequiredMixin, DeleteView):
   model = Item
   success_url = '/profile/' 
 
-class ItemUpdate(UpdateView):
+class ItemUpdate(LoginRequiredMixin, UpdateView):
   model = Item
   fields = ['name', 'description', 'quantity']
 
@@ -68,9 +69,11 @@ def items_detail(request, item_id):
     'item': item, 
      })
 
+@login_required
 def add_post(request, item_id):
   item = Item.objects.get(id=item_id)
   print(request, item)
   item.posted = True
   item.save()
   return redirect('profile')
+  

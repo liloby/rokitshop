@@ -6,7 +6,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
-from .models import Item
+from .models import Item, Bid
+from .forms import BidForm
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -74,3 +75,20 @@ def add_post(request, item_id):
   item.posted = True
   item.save()
   return redirect('profile')
+
+# class BidCreate(LoginRequiredMixin, CreateView):
+#   model = Bid
+#   fields = ['current_bid']
+#   item_id = Item.id
+#   def form_valid(self, form):
+#     form.instance.user = self.request.user
+#     return super().form_valid(form)
+
+def add_bid(request, item_id):
+  form = BidForm(request.POST)
+  if form.is_valid():
+    new_bid = form.save(commit=False)
+    new_bid.item_id = item_id
+    new_bid.save()
+  # return redirect('detail', item_id=item_id)
+  return redirect('detail')

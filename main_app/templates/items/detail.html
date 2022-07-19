@@ -12,6 +12,25 @@
             <p>Posted on: {{ item.date }}</p>
           </div>
         </div>
-   </h1>
-
+        <div class="col s6">
+          <form action="{% url 'add_bid' %}" method="POST">
+            {% csrf_token %}
+            {{ bid_form.as_p }}
+            <input type="submit" class="btn" value="Add Bid">
+            <thead>
+              <tr><th>Current Bid</th></tr>
+              <input value="{{ item.min_bid }}"" type="text" name="Bid" >
+            </thead>
+          </form>
+          <table class="striped">
+            <tbody>
+              {% for bid in item.bid_set.all %}
+                <tr>
+                  <td>{{bid.current_bid}}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
    {% endblock %}

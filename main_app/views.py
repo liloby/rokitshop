@@ -71,8 +71,10 @@ class ItemUpdate(LoginRequiredMixin, UpdateView):
 
 def items_detail(request, item_id):
   item = Item.objects.get(id=item_id)
+  bid_form = BidForm()
   return render(request, 'items/detail.html', {
-    'item': item, 
+    'item': item,
+    'bid_form': bid_form 
      })
 
 @login_required
@@ -83,19 +85,10 @@ def add_post(request, item_id):
   item.save()
   return redirect('profile')
 
-# class BidCreate(LoginRequiredMixin, CreateView):
-#   model = Bid
-#   fields = ['current_bid']
-#   item_id = Item.id
-#   def form_valid(self, form):
-#     form.instance.user = self.request.user
-#     return super().form_valid(form)
-
 def add_bid(request, item_id):
   form = BidForm(request.POST)
   if form.is_valid():
     new_bid = form.save(commit=False)
     new_bid.item_id = item_id
     new_bid.save()
-  # return redirect('detail', item_id=item_id)
-  return redirect('detail')
+  return redirect('detail', item_id=item_id)

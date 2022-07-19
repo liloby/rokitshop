@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if item %}
+<h1 class="center">Edit {{ item.name }}</h1>
+{% else %}
   <h1 class="center">Add Item</h1>
+  {% endif %}
   <div class="card item-detail-card center">
     <div class="card-content item-detail-content white">
   <!-- Leaving the action empty makes the form post to the same url used to display it -->

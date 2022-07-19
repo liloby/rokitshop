@@ -7,6 +7,10 @@ body {
     background-attachment: fixed;
 }
 
+.rocket-logo {
+    transform: rotate(50deg) translate(0, -15%);
+}
+
 main {
     flex: 1 0 auto;
 }
@@ -21,7 +25,7 @@ footer.page-footer {
 }
 
 .nav-wrapper, nav {
-    background: linear-gradient(0deg, rgba(0, 242, 255, 0.5), rgba(0, 114, 235, 0.7));
+    background: linear-gradient(0deg, rgba(0, 114, 235, 0.7), rgba(0, 242, 255, 0.5));
 }
 
 .page-footer {
@@ -60,6 +64,7 @@ footer.page-footer {
     border: 2px solid rgb(220, 193, 19);
     text-align: center;
     color: white;
+    padding: 1rem;
 }
 
 .unlisted-container {
@@ -67,6 +72,7 @@ footer.page-footer {
     border: 2px solid rgb(220, 193, 19);
     text-align: center;
     color: white;
+    padding: 1rem;
 }
 
 h1 {
@@ -74,32 +80,40 @@ h1 {
 }
 
 .profile-container {
-    border: 2px solid rgb(220, 193, 19);
+    border: 1px solid rgb(220, 193, 19);
     padding: 5rem;
     background: linear-gradient(180deg, rgba(78, 78, 159, 0.7), rgba(144, 188, 203, 0.85));
 }
 
 .profile-listed-item {
-    border: 1px solid rgb(26, 255, 0);
-    margin-left: 1rem;
+    border: 1px solid rgb(220, 193, 19);
+    border-radius: 50% 10%;
     margin-top: 1rem;
+    background: linear-gradient(200deg, rgba(196, 0, 235, 0.3), rgba(0, 242, 255, 0.3));
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.201);
+}
+
+.profile-listed-item:hover {
+    color: yellow;
+    background: linear-gradient(180deg, rgba(0, 242, 255, 0.7), rgba(0, 114, 235, 0.7));
 }
 
 .profile-listed-item-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
     margin-bottom: 1rem;
 }
 
 .profile-unlisted-item {
-    border: 1px solid red;
-    margin-left: 1rem;
+    border: 1px dashed red;
     margin-top: 1rem;
 }
 
 .profile-unlisted-item-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -123,6 +137,7 @@ h1 {
 
 .card-content-hover:hover {
     color: rgb(255, 213, 0);
+    border: 1px solid white;;
 }
 
 .item-detail-card {
@@ -157,6 +172,10 @@ h1 {
 .home-link:hover {
     animation: eyecatch-hover 4s infinite;
     transition: 500ms ease-in-out;
+}
+
+ul li, p span {
+    color: black;
 }
 
 @keyframes eyecatch {

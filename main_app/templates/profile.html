@@ -14,7 +14,7 @@
         <div>Advanced Seller <i class="fa-solid fa-thumbs-up"></i></div>
         {% endif %}
         {% if item_listed.count >= 20 %}
-        <div>Elite Seller <i class="fa-solid fa-rocket-launch"></i></div>
+        <div>Elite Seller <i class="fa-solid fa-rocket"></i></div>
         {% endif %}
         {% endif %}
         <br>
@@ -53,7 +53,7 @@
                     </form>
                 </div>
                 <div class="card-action">
-                    <form action="{% url 'unlisted_update' item.id %}" method="POST">
+                    <form action="{% url 'unlisted_update' item.id %}">
                         {% csrf_token %}
                         <button type="submit" class="btn">Update</button>
                     </form>

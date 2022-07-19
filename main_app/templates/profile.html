@@ -14,9 +14,14 @@
          <div>Listed Items: {{ item_listed.count }}</div>
          <div class="profile-listed-item-container">
          {% for item in item_listed %}
+         <a class="white-text" href="{% url 'detail' item.id %}">
          <div class="profile-listed-item">
          <p>{{ item.name }}</p>
+         <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000" width="100px"alt="">
+         <br>
+         <p>Highest Bid: {{ item.min_bid }}</p>
         </div>
+    </a>
         {% endfor %}
     </div>
 </div>
@@ -26,6 +31,7 @@
         {% for item in item_unlisted %}
         <div class="profile-unlisted-item">
          <p>{{ item.name }}</p>
+         <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000" width="100px"alt="">
          {% comment %} <button>Update</button>
          <button>Post</button> {% endcomment %}
          {% comment %} <button <a href="{% url 'unlisted_delete' item.id %}">Delete</button> {% endcomment %}

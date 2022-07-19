@@ -60,7 +60,7 @@ class ItemDelete(DeleteView):
 
 class ItemUpdate(UpdateView):
   model = Item
-  fields = ['name', 'description']
+  fields = ['name', 'description', 'quantity']
 
 def items_detail(request, item_id):
   item = Item.objects.get(id=item_id)

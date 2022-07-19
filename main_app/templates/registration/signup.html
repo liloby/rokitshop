@@ -2,7 +2,8 @@
 {% block content %}
 
 <h1>Sign Up</h1>
-
+<div class="card item-detail-card center">
+  <div class="card-content item-detail-content white">
 {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
 
 <form method="POST" action="{% url 'signup' %}">
@@ -10,5 +11,6 @@
   {{ form.as_p }}
   <input type="submit" class="btn" value="signup">
 </form>
-
+</div>
+</div>
 {% endblock %}

@@ -95,7 +95,7 @@ h1 {
 
 .profile-listed-item:hover {
     color: yellow;
-    background: linear-gradient(180deg, rgba(0, 242, 255, 0.7), rgba(0, 114, 235, 0.7));
+    background: linear-gradient(200deg, rgba(196, 0, 235, 0.5), rgba(0, 242, 255, 0.5));
 }
 
 .profile-listed-item-container {

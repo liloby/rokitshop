@@ -47,6 +47,11 @@ def items_index(request):
   items = Item.objects.all()
   return render(request, 'items/index.html', { 'items': items })
 
+def popular_index(request):
+  # Need to tweak this to filter out popular items
+  popular_items = Item.objects.order_by('-date')
+  return render(request, 'items/popular_index.html', { 'popular_items': popular_items })
+
 class ItemCreate(LoginRequiredMixin, CreateView):
   model = Item
   fields = ['name', 'quantity', 'description', 'min_bid']

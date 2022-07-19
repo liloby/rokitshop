@@ -8,7 +8,40 @@ body {
 }
 
 .rocket-logo {
-    transform: rotate(50deg) translate(0, -15%);
+    animation: launch 12s infinite;
+}
+
+@keyframes launch {
+    0% {
+        opacity: 0%;
+        transform: translate(0%, -155%);
+    }
+    15%{
+        transform: translate(0%, -5%);
+        opacity: 50%;
+    }
+    30% {
+        transform: translate(0%, -5%);
+        opacity: 100%;
+    }
+    45% {
+        transform: rotate(60deg) translate(0, -15%);
+    }
+    55% {
+        transform: rotate(40deg) translate(0, -15%);
+    }
+    65% {
+        transform: rotate(60deg) translate(0, -15%);
+    }
+    75% {
+        transform: rotate(50deg) translate(5%, 10%);
+    }
+    85% {
+        transform: rotate(50deg) translate(-25%, -155%);
+    }
+    100% {
+        transform: rotate(50deg) translate(-25%, -155%);
+    }
 }
 
 main {
@@ -91,9 +124,12 @@ h1 {
     margin-top: 1rem;
     background: linear-gradient(200deg, rgba(196, 0, 235, 0.3), rgba(0, 242, 255, 0.3));
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.201);
+    transition: 500ms ease-out;
 }
 
 .profile-listed-item:hover {
+    transform: scale(1.1);
+    transition: 350ms ease-in;
     border: 1px solid rgb(253, 249, 0);
     color: yellow;
     background: linear-gradient(200deg, rgba(196, 0, 235, 0.5), rgba(0, 242, 255, 0.5));
@@ -136,11 +172,13 @@ h1 {
 .card-content {
     color: white;
     border: 1px solid rgba(255, 255, 255, 0);
+    transition: 250ms ease-out;
 }
 
 .card-content-hover:hover {
     color: rgb(255, 213, 0);
     border: 1px solid white;;
+    transition: 250ms ease-in;
 }
 
 .item-detail-card {

@@ -9,6 +9,7 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('items/create/', views.ItemCreate.as_view(), name='items_create'),
     path('items/', views.items_index, name='index'),
+    path('items/popular/', views.popular_index, name='popular_index'),
     path('items/<int:item_id>/', views.items_detail, name='detail'),
     path('profile/<int:pk>/delete/', views.ItemDelete.as_view(), name='unlisted_delete'),
     path('profile/<int:pk>/update/', views.ItemUpdate.as_view(), name='unlisted_update'),

@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Add Item</h1>
+  <h1 class="center">Add Item</h1>
+  <div class="card item-detail-card center">
+    <div class="card-content item-detail-content white">
   <!-- Leaving the action empty makes the form post to the same url used to display it -->
   <form action="" method="POST">
     <!-- Django requires the following for security purposes -->
@@ -10,6 +12,10 @@
       <!-- Render the inputs inside of <tr>s & <td>s -->
       {{ form.as_table }}
     </table>
+    <div class="center">
     <input type="submit" value="Submit!" class="btn">
+  </div>
   </form>
+</div>
+</div>
 {% endblock %}

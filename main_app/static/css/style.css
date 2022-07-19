@@ -87,7 +87,16 @@ h1 {
 
 .profile-listed-item {
     border: 1px solid rgb(26, 255, 0);
+    border-radius: 50% 10%;
     margin-top: 1rem;
+    background: linear-gradient(200deg, rgba(196, 0, 235, 0.3), rgba(0, 242, 255, 0.3));
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.201);
+}
+
+.profile-listed-item:hover {
+    border: 1px solid rgb(255, 247, 0);
+    color: yellow;
+    background: linear-gradient(180deg, rgba(0, 242, 255, 0.7), rgba(0, 114, 235, 0.7));
 }
 
 .profile-listed-item-container {
@@ -129,6 +138,7 @@ h1 {
 
 .card-content-hover:hover {
     color: rgb(255, 213, 0);
+    border: 1px solid white;;
 }
 
 .item-detail-card {
@@ -163,6 +173,10 @@ h1 {
 .home-link:hover {
     animation: eyecatch-hover 4s infinite;
     transition: 500ms ease-in-out;
+}
+
+ul li, p span {
+    color: black;
 }
 
 @keyframes eyecatch {

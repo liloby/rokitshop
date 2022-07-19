@@ -86,7 +86,7 @@ h1 {
 }
 
 .profile-listed-item {
-    border: 1px solid rgb(220, 193, 19);
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 40% 10%;
     margin-top: 1rem;
     background: linear-gradient(200deg, rgba(196, 0, 235, 0.3), rgba(0, 242, 255, 0.3));
@@ -94,6 +94,7 @@ h1 {
 }
 
 .profile-listed-item:hover {
+    border: 1px solid rgb(253, 249, 0);
     color: yellow;
     background: linear-gradient(200deg, rgba(196, 0, 235, 0.5), rgba(0, 242, 255, 0.5));
 }
@@ -106,7 +107,7 @@ h1 {
 }
 
 .profile-unlisted-item {
-    border: 1px dashed rgb(255, 242, 0);
+    border: 1px dashed rgb(255, 255, 255);
     margin-top: 1rem;
     background: linear-gradient(180deg, rgba(110, 110, 110, 0.35), rgba(110, 110, 110, 0.35));
 }

@@ -45,6 +45,6 @@ class Bid(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.price
+    def __int__(self, current_bid):
+        return self.current_bid
 

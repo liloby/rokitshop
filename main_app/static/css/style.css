@@ -50,7 +50,7 @@ footer.page-footer {
 }
 
 .userinfo-box {
-    border-bottom: 2px solid rgb(220, 193, 19);
+    border-bottom: 1px solid rgb(220, 193, 19);
     text-align: center;
     color: white;
 }
@@ -61,7 +61,7 @@ footer.page-footer {
 
 .listed-container {
     margin-top: 1rem;
-    border-bottom: 2px solid rgb(220, 193, 19);
+    border-bottom: 1px solid rgb(220, 193, 19);
     text-align: center;
     color: white;
     padding: 1rem;
@@ -69,7 +69,7 @@ footer.page-footer {
 
 .unlisted-container {
     margin-top: 1rem;
-    border-bottom: 2px solid rgb(220, 193, 19);
+    border-bottom: 1px solid rgb(220, 193, 19);
     text-align: center;
     color: white;
     padding: 1rem;

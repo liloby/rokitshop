@@ -39,10 +39,9 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
     
 class Bid(models.Model):
-    # price = models.IntegerField()
     date = models.DateField(('Upload Date'), auto_now_add=True)
     current_bid = models.IntegerField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
 
     def __str__(self):

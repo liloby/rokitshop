@@ -128,9 +128,10 @@ h1 {
 }
 
 .profile-listed-item:hover {
-    transform: scale(1.1);
+    transform: scale(1.02);
     transition: 350ms ease-in;
     border: 1px solid rgb(253, 249, 0);
+    border-radius: 40% 0%;
     color: yellow;
     background: linear-gradient(200deg, rgba(196, 0, 235, 0.5), rgba(0, 242, 255, 0.5));
 }

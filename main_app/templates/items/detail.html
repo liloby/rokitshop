@@ -13,5 +13,13 @@
           </div>
         </div>
    </h1>
-
+   <h2 class="center">Start Bidding</h2>
+   <div class="card bidding-card center">
+     <div class="card-content bidding-content">
+       <span class="card-title">{{ item.name }}</span>
+       <input value="${{ item.min_bid }}"" type="text" name="Bid" required>
+       <button type="submit" class="btn">Bid</button>
+     </div>
+   </div>
+</h2>
    {% endblock %}

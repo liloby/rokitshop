@@ -74,7 +74,7 @@ def items_detail(request, item_id):
   item = Item.objects.get(id=item_id)
   bid_form = BidForm()
   current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
-  return render(request, 'items/detail.html', {
+  return render(request, 'items/detail.html',  {
     'item': item,
     'bid_form': bid_form,
     'current_bid': current_bid
@@ -96,8 +96,8 @@ def add_bid(request, item_id):
     new_bid.item_id = item_id
     new_bid.user_id = request.user.id
     new_bid.save()
-    item_bid = Item.objects.get(id=item_id)
-    item_bid.min_bid = new_bid.current_bid
-    item_bid.save()
+    # item_bid = Item.objects.get(id=item_id)
+    # item_bid.min_bid = new_bid.current_bid
+    # item_bid.save()
   return redirect('detail', item_id=item_id)
 

@@ -5,7 +5,18 @@
         <div class="card item-detail-card center">
           <div class="card-content item-detail-content">
             <span class="card-title">{{ item.name }}</span>
-            <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000" width="500px"alt="">
+          </div>
+          {% for photo in item.photo_set.all %}
+            <img class="responsive-img card-panel" src="{{photo.url}}">
+          {% empty %}
+            <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+          {% endfor %}
+          <form action="{% url 'add_photo' item.id %}" enctype="multipart/form-data" method="POST" alt="Item Photo" class="card-panel">
+            {% csrf_token %}
+            <input type="file" name="photo-file">
+            <br><br>
+            <input type="submit" class="btn" value="Upload Photo">
+        </form>
             <p>Starting Bid: ${{ item.min_bid }}</p>
             <p>Quantity: {{ item.quantity }}</p>
             <p>Description: {{ item.description|linebreaks }}</p>
@@ -22,6 +33,7 @@
                 {% else %}
                 <input type="submit" class="btn" value="Add Bid Higher than ${{ item.min_bid }}">
                 {% endif %}
+
               </div>
             </form>
             <table class="striped blue-grey lighten-3">

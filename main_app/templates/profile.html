@@ -14,8 +14,8 @@
             <input type="file" name="photo-file">
             <input type="submit" class="btn" value="Upload Photo">
         </form>
-    </div>
         {% endfor %}
+    </div>
         {% comment %} <div>Member Since: {{ user.profile.signup_date|date:"M d, Y" }}</div> {% endcomment %}
         <div>Member Since: {{ user.date_joined|date:"M d, Y" }}</div>
         {% if item_listed.count >= 5%}

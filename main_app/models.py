@@ -47,3 +47,6 @@ class Bid(models.Model):
     def __str__(self):
         return self.user
 
+    class Meta:
+        ordering = ["-current_bid"]
+

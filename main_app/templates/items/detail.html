@@ -10,32 +10,36 @@
             <p>Quantity: {{ item.quantity }}</p>
             <p>Description: {{ item.description|linebreaks }}</p>
             <p>Posted on: {{ item.date }}</p>
-            {% for bid in item.bid_set.all %}
-            <p>Highest Bid: {{ bid.current_bid }} </p>
-            {% endfor %}
+            <p>Highest Bid: {{ current_bid }}</p>
           </div>
-        </div>
-        <div class="col s6">
-          <form action="{% url 'add_bid' item.id %}" method="POST">
-            {% csrf_token %}
-            {{ bid_form.as_p }}
-            <input type="submit" class="btn" value="Add Bid">
-          </form>
-          <table class="striped">
-            <thead>
-              <tr><th>Date:</th><th>Current Bid:</th><th>User:</th></tr>
-            </thead>
-            <tbody>
-              {% for bid in item.bid_set.all %}
+          <div class="col s6">
+            <form action="{% url 'add_bid' item.id %}" method="POST">
+              {% csrf_token %}
+              {{ bid_form.as_p }}
+              <div class="center move-up-btn">
+                {% if current_bid %}
+                <input type="submit" class="btn" value="Add Bid Higher than ${{ current_bid }}">
+                {% else %}
+                <input type="submit" class="btn" value="Add Bid Higher than ${{ item.min_bid }}">
+                {% endif %}
+              </div>
+            </form>
+            <table class="striped blue-grey lighten-3">
+              <thead>
+                <tr><th>Date:</th><th>Current Bid:</th><th>User:</th></tr>
+              </thead>
+              <tbody>
+                {% for bid in item.bid_set.all %}
                 <tr>
                   <td>{{bid.date}}</td>
                   <td>{{bid.current_bid}}</td>
                   <td>{{ bid.user }}</td>
                 </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-      </div>
-   {% endblock %}
+    </div>
+      {% endblock %}

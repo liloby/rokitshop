@@ -9,12 +9,12 @@ from django.dispatch import receiver
 
 class Item(models.Model):
     name = models.CharField(max_length=100)
-    quantity = models.IntegerField()
+    quantity = models.PositiveIntegerField()
     date = models.DateField(('Upload Date'), auto_now_add=True)
     description = models.TextField(max_length=250)
     posted = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    min_bid = models.IntegerField()
+    min_bid = models.PositiveIntegerField()
 
     def __str__(self):
         return self.name
@@ -38,7 +38,7 @@ def save_user_profile(sender, instance, **kwargs):
     
 class Bid(models.Model):
     date = models.DateField(('Upload Date'), auto_now_add=True)
-    current_bid = models.IntegerField()
+    current_bid = models.PositiveIntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
 
@@ -54,3 +54,10 @@ class Photo(models.Model):
 
     def __str__(self):
         return f"Photo for item_id: {self.item_id} @{self.url}"
+
+class UserPhoto(models.Model):
+    url = models.CharField(max_length=200)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for user_id: {self.user_id} @{self.url}"

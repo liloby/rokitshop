@@ -10,9 +10,7 @@
             <p>Quantity: {{ item.quantity }}</p>
             <p>Description: {{ item.description|linebreaks }}</p>
             <p>Posted on: {{ item.date }}</p>
-            {% for bid in item.bid_set.all %}
-            <p>Highest Bid: {{ bid.current_bid }} </p>
-            {% endfor %}
+            <p>Highest Bid: {{ current_bid }}</p>
           </div>
         </div>
         <div class="col s6">

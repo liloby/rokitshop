@@ -9,7 +9,6 @@ from django.dispatch import receiver
 
 class Item(models.Model):
     name = models.CharField(max_length=100)
-    photo = models.CharField(max_length=1000)
     quantity = models.IntegerField()
     date = models.DateField(('Upload Date'), auto_now_add=True)
     description = models.TextField(max_length=250)
@@ -25,7 +24,6 @@ class Item(models.Model):
     
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
     location = models.CharField(null=True, max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
         
@@ -50,3 +48,9 @@ class Bid(models.Model):
     class Meta:
         ordering = ["-current_bid"]
 
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for item_id: {self.item_id} @{self.url}"

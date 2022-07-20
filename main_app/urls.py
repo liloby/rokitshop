@@ -15,4 +15,5 @@ urlpatterns = [
     path('profile/<int:pk>/update/', views.ItemUpdate.as_view(), name='unlisted_update'),
     path('profile/<int:item_id>/add_post/', views.add_post, name='add_post'),
     path('items/<int:item_id>/add_bid/', views.add_bid, name='add_bid'),
+    path('items/<int:item_id>/add_photo/', views.add_photo, name='add_photo'),
    ]

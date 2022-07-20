@@ -5,6 +5,17 @@
 <div class="profile-container">
     <div class="userinfo-box">
         <div>{{ user | capfirst }}</div><br>
+        {% for photo in user.userphoto_set.all %}
+        <img width="300px" class="responsive-img card-panel" src="{{photo.url}}">
+        {% empty %}
+        <div class="card-panel teal-text center-align">No Profile Pic Uploaded
+        <form action="{% url 'add_user_photo' user.id %}" enctype="multipart/form-data" method="POST" alt="User UserPhoto" class="card-panel">
+            {% csrf_token %}
+            <input type="file" name="photo-file">
+            <input type="submit" class="btn" value="Upload Photo">
+        </form>
+    </div>
+        {% endfor %}
         {% comment %} <div>Member Since: {{ user.profile.signup_date|date:"M d, Y" }}</div> {% endcomment %}
         <div>Member Since: {{ user.date_joined|date:"M d, Y" }}</div>
         {% if item_listed.count >= 5%}
@@ -27,7 +38,9 @@
          <a class="white-text" href="{% url 'detail' item.id %}">
          <div class="profile-listed-item">
          <p>{{ item.name }}</p>
-         <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000" width="100px"alt="">
+         {% for photo in item.photo_set.all %}
+      <img width="200px" height="400px" class="responsive-img card-panel" src="{{photo.url}}">
+      {% endfor %}
          <br>
          <p>Start Bid: {{ item.min_bid }}</p>
         </div>
@@ -38,10 +51,13 @@
     <div class="unlisted-container">
         <div>Unlisted Items: {{ item_unlisted.count }}</div>
         <div class="profile-unlisted-item-container">
-        {% for item in item_unlisted %}
+            {% for item in item_unlisted %}
+        <a class="white-text" href="{% url 'detail' item.id %}">
         <div class="profile-unlisted-item">
          <p>{{ item.name }}</p>
-         <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000" width="100px"alt="">
+         {% for photo in item.photo_set.all %}
+      <img width="200px" height="400px" class="responsive-img card-panel" src="{{photo.url}}">
+      {% endfor %}
          {% comment %} <button>Update</button>
          <button>Post</button> {% endcomment %}
          {% comment %} <button <a href="{% url 'unlisted_delete' item.id %}">Delete</button> {% endcomment %}
@@ -66,6 +82,7 @@
                 </div>
             </div>
         </div>
+        </a>
         {% endfor %}
     </div>
     </div>  

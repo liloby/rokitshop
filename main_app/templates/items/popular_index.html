@@ -9,11 +9,14 @@
    <a href="{% url 'detail' item.id %}">
     <div class="card-content center card-content-hover purple-border">
       <span class="card-title">{{ item.name }}</span>
-      <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000" width="250px"alt="">
+      {% for photo in item.photo_set.all %}
+      <img width="200px" height="400px" class="responsive-img card-panel" src="{{photo.url}}">
+      {% endfor %}
+      <p>Posted By: {{ item.user }}</p>
       <p>Quantity: {{ item.quantity }}</p>
       <p>Description: {{ item.description }}</p>
       <p>Posted: {{ item.date }}</p>
-      <p> Minimum Bid: {{ item.min_bid }}</p>
+      <p> Starting Bid: {{ item.min_bid }}</p>
      </div>
     </a>
   </div>

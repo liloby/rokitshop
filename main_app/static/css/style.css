@@ -230,6 +230,20 @@ ul li, p span {
     margin: .7rem 0 1rem 0;
 }
 
+p label {
+    color: black;
+    font-size: 1.5rem;
+}
+
+input[type=number]:not(.browser-default) {
+    border-bottom: 1px solid #000000;
+    width: 8%;
+}
+
+.move-up-btn {
+    transform: translate(0%, -35%);
+}
+
 @keyframes eyecatch {
     0% {
         color: rgb(166, 255, 245);

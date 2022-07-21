@@ -26,10 +26,13 @@ def about(request):
 
 @login_required
 def profile(request):
+  items = Item.objects.all()
+  for item in items:
+    current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
   item_listed = Item.objects.all().filter(posted=True).filter(user=request.user)
   item_unlisted = Item.objects.all().filter(posted=False).filter(user=request.user)
   return render(request, 'profile.html', {'item_listed':  item_listed,
-    'item_unlisted': item_unlisted})
+    'item_unlisted': item_unlisted, 'current_bid': current_bid })
 
 def signup(request):
   error_message = ''
@@ -55,14 +58,15 @@ def items_index(request):
   for item in items:
     expiration = item.date + timedelta(days=3)
     current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
-  return render(request, 'items/index.html', { 'items': items, 'expiration': expiration, 'current_bid': current_bid  })
+    print(current_bid)
+  return render(request, 'items/index.html', { 'items': items, 'expiration': expiration, 'current_bid': current_bid })
 
 def popular_index(request):
   # Need to tweak this to filter out popular items
   popular_items = Item.objects.order_by('-date')
   for item in popular_items:
-    expiration = item.date + timedelta(days=3)
     current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
+    expiration = item.date + timedelta(days=3)
   return render(request, 'items/popular_index.html', { 'popular_items': popular_items, 'expiration': expiration, 'current_bid': current_bid })
 
 class ItemCreate(LoginRequiredMixin, CreateView):
@@ -85,6 +89,7 @@ def items_detail(request, item_id):
   expiration = item.date + timedelta(days=3)
   bid_form = BidForm()
   current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
+  print(current_bid)
   return render(request, 'items/detail.html',  {
     'item': item,
     'bid_form': bid_form,
@@ -96,6 +101,7 @@ def items_detail(request, item_id):
 def add_post(request, item_id):
   item = Item.objects.get(id=item_id)
   print(request, item)
+  item.date = datetime.now()
   item.posted = True
   item.save()
   return redirect('profile')

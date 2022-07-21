@@ -15,6 +15,8 @@ body {
     width: 200px;
     min-height: 200px;
     max-height: 200px;
+    border-radius: 10%;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes launch {
@@ -128,6 +130,7 @@ h1 {
     border: 1px solid rgb(255, 255, 255);
     border-radius: 40% 10%;
     margin-top: 1rem;
+    line-height: .5rem;
     background: linear-gradient(200deg, rgba(196, 0, 235, 0.3), rgba(0, 242, 255, 0.3));
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.201);
     transition: 500ms ease-out;
@@ -155,6 +158,10 @@ h1 {
     background: linear-gradient(180deg, rgba(110, 110, 110, 0.35), rgba(110, 110, 110, 0.35));
 }
 
+.profile-unlisted-item:hover {
+    background: linear-gradient(180deg, rgba(176, 176, 176, 0.35), rgba(164, 164, 164, 0.35));
+}
+
 .profile-unlisted-item-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -177,14 +184,14 @@ h1 {
 }
 
 .card-content {
-    color: white;
+    color: rgb(255, 255, 255);
     border: 1px solid rgba(255, 255, 255, 0);
     transition: 250ms ease-out;
 }
 
 .card-content-hover:hover {
-    color: rgb(255, 213, 0);
-    border: 1px solid white;;
+    color: rgb(250, 246, 143);
+    border: 1px solid white;
     transition: 250ms ease-in;
 }
 
@@ -227,7 +234,7 @@ ul li, p span {
 }
 
 .purple-border {
-    box-shadow: 5px 5px 10px rgba(115, 0, 255, 0.267);
+    box-shadow: 5px 5px 5px rgba(115, 0, 255, 0.15);
 }
 
 .btn-container {
@@ -257,6 +264,41 @@ input[type=number]:not(.browser-default) {
 .bid-section form p label {
     font-weight: bold;
 
+}
+
+.delete-btn {
+    color: rgb(182, 0, 0);
+    width: 90%;
+}
+
+.post-btn {
+    width: 90%;
+    text-align: center;
+}
+
+.update-btn {
+    color: rgb(0, 0, 0);
+    width: 90%;
+}
+
+.all-items {
+    width: 300px;
+    min-height: 300px;
+    max-height: 300px;
+    border-radius: 10%;
+    box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.1);
+    border: 1px solid white;
+    transition: 1000ms;
+}
+
+.all-items:hover {
+    transition: 1000ms;
+    border-radius: 25%;
+    border: 1px solid rgb(255, 225, 0);
+}
+
+.bid-table {
+    background: linear-gradient(180deg, rgb(0 40 255 / 35%), rgb(255 255 255 / 35%))
 }
 
 @keyframes eyecatch {

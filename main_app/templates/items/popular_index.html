@@ -10,14 +10,16 @@
     <div class="card-content center card-content-hover purple-border">
       <span class="card-title">{{ item.name }}</span>
       {% for photo in item.photo_set.all %}
-      <img width="200px" height="400px" class="responsive-img card-panel" src="{{photo.url}}">
+      <img width="200px" height="400px" class="responsive-img card-panel all-items" src="{{photo.url}}">
       {% endfor %}
-      <p>Posted By: {{ item.user }}</p>
+      <p>Seller: {{ item.user | capfirst }}</p>
       <p>Quantity: {{ item.quantity }}</p>
-      <p>Posted: {{ item.date }}</p>
-      <p>Expires on: {{ expiration }}</p>
-      <p>Starting Bid: {{ item.min_bid }}</p>
-      <p>Current Bid: {{ current_bid }}</p>
+      <p>Posted on {{ item.date }}</p>
+      <p>Expires on {{ expiration }}</p>
+      <p>Starting Bid: ${{ item.min_bid }}</p>
+      {% if current_bid %}
+      <p>Current Bid: ${{ current_bid }}</p>
+      {% endif %}
      </div>
     </a>
   </div>

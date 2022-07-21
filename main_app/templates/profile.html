@@ -4,42 +4,45 @@
 <div class="online">ONLINE ● </div>
 <div class="profile-container">
 <div>
-  <div class="userinfo-box">
-    <div class="user-text">{{ user | capfirst }}</div>
-    <br />
-    {% for photo in user.userphoto_set.all %}
-    <img class="responsive-img card-panel profile-pic" src="{{photo.url}}" />
-    {% empty %}
-    <div class="card-panel teal-text center-align">
-      No Profile Pic Uploaded
-      <form
-        action="{% url 'add_user_photo' user.id %}"
-        enctype="multipart/form-data"
-        method="POST"
-        alt="User UserPhoto"
-        class="card-panel"
-      >
-        {% csrf_token %}
-        <input type="file" name="photo-file" />
-        <input type="submit" class="btn" value="Upload Photo" />
-      </form>
-      {% endfor %}
-      {% comment %}
-      <div>Member Since: {{ user.profile.signup_date|date:"M d, Y" }}</div>
-      {% endcomment %}
-      <div>Member Since: {{ user.date_joined|date:"M d, Y" }}</div>
-      {% if item_listed.count >= 5%}
-      <p>Achievements:</p>
-      <div class="yellow darken-2">Rookie Seller <i class="fa-solid fa-egg"></i></div>
-      {% if item_listed.count >= 10 %}
-      <div class="blue">Advanced Seller <i class="fa-solid fa-thumbs-up"></i></div>
-      {% endif %} {% if item_listed.count >= 20 %}
-      <div class="purple">Elite Seller <i class="fa-solid fa-rocket"></i></div>
-      {% endif %} {% endif %}
-      <br />
+    <div class="userinfo-box">
+        <div>{{ user | capfirst }}</div><br>
+        {% for photo in user.userphoto_set.all %}
+         <img class="responsive-img card-panel profile-pic" src="{{photo.url}}" />
+        {% empty %}
+        <div class="card-panel teal-text center-align">No Profile Pic Uploaded
+        <form action="{% url 'add_user_photo' user.id %}" enctype="multipart/form-data" method="POST" alt="User UserPhoto" class="card-panel">
+            {% csrf_token %}
+            <input type="file" name="photo-file">
+            <input type="submit" class="btn" value="Upload Photo">
+        </form>
+        {% endfor %}
+
+        {% for photo in user.userphoto_set.all %}
+        <form action="{% url 'delete_user_photo' user.id  %}" method="POST" class="card-panel"> 
+         {% csrf_token %}
+         <input type="submit" class="btn" value="Delete Photo">
+         {% endfor %}
+        </form> 
+
+
     </div>
-  </div>
-  <div class="listed-container">
+
+        {% comment %} <div>Member Since: {{ user.profile.signup_date|date:"M d, Y" }}</div> {% endcomment %}
+        <div>Member Since: {{ user.date_joined|date:"M d, Y" }}</div>
+        {% if item_listed.count >= 5%}
+        <p>Achievements: </p>
+        <div>Rookie Seller <i class="fa-solid fa-egg"></i></div>
+        {% if item_listed.count >= 10 %}
+        <div>Advanced Seller <i class="fa-solid fa-thumbs-up"></i></div>
+        {% endif %}
+        {% if item_listed.count >= 20 %}
+        <div>Elite Seller <i class="fa-solid fa-rocket"></i></div>
+        {% endif %}
+        {% endif %}
+        <br>
+    </div>
+
+   <div class="listed-container">
     <div>Listed Items: {{ item_listed.count }}</div>
     <div class="profile-listed-item-container">
       {% for item in item_listed %}

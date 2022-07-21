@@ -17,6 +17,7 @@ import boto3
 import os
 
 # Create your views here.
+@login_required
 def add_photo(request, item_id):
     # photo-file will be the "name" attribute on the <input type="file">
     photo_file = request.FILES.get('photo-file', None)
@@ -36,8 +37,6 @@ def add_photo(request, item_id):
             print('An error occurred uploading file to S3')
             print(e)
     return redirect('detail', item_id=item_id)
-
-
 
 
 def home(request):
@@ -127,6 +126,7 @@ def add_bid(request, item_id):
     # item_bid.save()
   return redirect('detail', item_id=item_id)
 
+@login_required
 def add_photo(request, item_id):
     # photo-file will be the "name" attribute on the <input type="file">
     photo_file = request.FILES.get('photo-file', None)
@@ -147,6 +147,7 @@ def add_photo(request, item_id):
             print(e)
     return redirect('detail', item_id=item_id)
 
+@login_required
 def add_user_photo(request, user_id):
     # photo-file will be the "name" attribute on the <input type="file">
     photo_file = request.FILES.get('photo-file', None)

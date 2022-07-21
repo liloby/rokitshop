@@ -329,7 +329,7 @@ input[type=number]:not(.browser-default):focus {
 }
 
 .bid-table {
-    background: linear-gradient(180deg, rgb(0 40 255 / 35%), rgb(255 255 255 / 35%))
+    background: linear-gradient(180deg, rgb(0 40 255 / 35%), rgb(255 255 255 / 35%));
 }
 
 .profile-pic {
@@ -383,6 +383,15 @@ input[type=number]:not(.browser-default):focus {
 .photo-upload form {
     box-shadow: none;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35))
+}
+
+.bid-table thead tr th, .bid-table tbody tr td {
+    text-align: left
+}
+
+.bid-table thead tr {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 @keyframes eyecatch {

@@ -48,7 +48,6 @@
       <a class="white-text" href="{% url 'detail' item.id %}">
         <div class="profile-listed-item">
           <p>{{ item.name }}</p>
-          <p>Current Bid: ${{ current_bid }} </p>
           {% for photo in item.photo_set.all %}
           <img
           class="responsive-img card-panel listed-img"

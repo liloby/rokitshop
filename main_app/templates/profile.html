@@ -23,13 +23,9 @@
          <input type="submit" class="btn" value="Delete Photo">
          {% endfor %}
         </form> 
-
-
-    </div>
-
         {% comment %} <div>Member Since: {{ user.profile.signup_date|date:"M d, Y" }}</div> {% endcomment %}
         <div>Member Since: {{ user.date_joined|date:"M d, Y" }}</div>
-        {% if item_listed.count >= 5%}
+        {% if item_listed.count >= 5 %}
         <p>Achievements: </p>
         <div>Rookie Seller <i class="fa-solid fa-egg"></i></div>
         {% if item_listed.count >= 10 %}
@@ -40,6 +36,7 @@
         {% endif %}
         {% endif %}
         <br>
+    </div>
     </div>
 
    <div class="listed-container">

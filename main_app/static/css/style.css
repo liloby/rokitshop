@@ -280,7 +280,6 @@ input[type=number]:not(.browser-default) {
     text-align: center;
     font-size: 1.2rem;
     box-shadow: 2px 2px 5px rgba(48, 0, 108, 0.16);
-    transform: translate(0%, -10%);
     margin-left: 1rem;
 }
 
@@ -389,9 +388,37 @@ input[type=number]:not(.browser-default):focus {
     text-align: left
 }
 
-.bid-table thead tr {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+input[type=text]:not(.browser-default), input[type=password]:not(.browser-default) {
+    border-bottom: 1px solid #ffffff;
+}
+
+.white form p label {
+    color: white;
+}
+
+.helptext {
+    color: white;
+}
+
+.log-in {
+    background: linear-gradient(180deg, rgba(78, 78, 159, 0.7), rgba(144, 188, 203, 0.85));
+}
+
+.log-in-wrapper {
+    margin: 0 auto;
+    padding: 3rem;
+}
+
+.log-in-wrapper form p label {
+    color: white;
+    
+}
+
+.item-detail-pic {
+    min-width: 400px;
+    min-height: 500px;
+    max-height: 500px;
+    border-radius: 10%;
 }
 
 @keyframes eyecatch {

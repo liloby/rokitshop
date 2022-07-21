@@ -1,8 +1,47 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <h1 class="center">About the RokitShop</h1>
-<hr />
-<p class="center">RokitShop!</p>
+<div class="profile-container">
+    <div>
+        <h3 class="center" style="color:white"> Meet the team that puts the ROK in Rokitshop</h3>
+        <hr />
+    </div>
+    {% comment %} Rachel's Card {% endcomment %}
+    <div class="about-container"
+        <p>Rachel Ajebon: SQL and positivity expert! </p>
+    </div>
 
+    {% comment %} Oby's Card {% endcomment %}
+    <div class="about-container"
+        <p>Oby Li: Front-End hero and CSS wizard! See more of Oby's creations <a href="https://github.com/ajebora1">here.</a> </p>
+    </div>
+
+    {% comment %} Kiefer's Card {% endcomment %}
+    <div class="about-container"
+        <p>Kiefer Irvine: Really likes debugging and helping teammates! See more of Kiefer's creations <a href="https://github.com/ThroughEndurance">here.</a> </p>
+    </div>
+
+    <div>
+        <h3 class="center" style="color:white">Development Technologies Used</h3>
+        <hr />
+    </div>
+    <div class="about-container"
+        <p> RokitShop was developed with <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python,</a> <a href="https://www.djangoproject.com/">Django,</a> <a href="https://en.wikipedia.org/wiki/CSS">CSS,</a> <a href="https://en.wikipedia.org/wiki/HTML">HTML,</a> <a href="https://en.wikipedia.org/wiki/SQL">SQL,</a> <a href="https://aws.amazon.com/pm/serv-s3/?trk=fecf68c9-3874-4ae2-a7ed-72b6d19c8034&sc_channel=ps&sc_campaign=acquisition&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|Storage|S3|US|EN|Text&s_kwcid=AL!4422!3!488982706716!e!!g!!amazon%20s3&ef_id=Cj0KCQjw8uOWBhDXARIsAOxKJ2Ed3GK0jN9d7ov8NNjVMpp0MQi5HZKISQbCT9YG_KPVS_5M8ZwQmOoaAi7BEALw_wcB:G:s&s_kwcid=AL!4422!3!488982706716!e!!g!!amazon%20s3">Amazon S3,</a> and deployed on <a href="https://www.heroku.com/">Heroku</a>. </p>
+    </div>
+
+    <div>
+        <h3 class="center" style="color:white"> For Recruiters</h3>
+        <hr />
+    </div>
+    {% comment %} Info For Recruiters {% endcomment %}
+    <div class="about-container"
+        <p>Rachel Ajebon's <a href="https://www.linkedin.com/in/rachel-ajebon-2279993/">Linkedin.</a></p>
+    </div>
+    <div class="about-container"
+        <p>Oby Li's <a href="https://www.linkedin.com/in/oby-li/">Linkedin.</a></p>
+    </div>
+    <div class="about-container"
+        <p>Kiefer Irvine's <a href="https://www.linkedin.com/in/kirvine90/">Linkedin.</a></p>
+    </div>
+</div>
 {% endblock %}

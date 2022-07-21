@@ -8,6 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from .models import Item, Bid, Photo, UserPhoto
 from .forms import BidForm
+from datetime import datetime, timedelta
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -51,12 +52,18 @@ def signup(request):
 
 def items_index(request):
   items = Item.objects.all()
-  return render(request, 'items/index.html', { 'items': items })
+  for item in items:
+    expiration = item.date + timedelta(days=3)
+    current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
+  return render(request, 'items/index.html', { 'items': items, 'expiration': expiration, 'current_bid': current_bid  })
 
 def popular_index(request):
   # Need to tweak this to filter out popular items
   popular_items = Item.objects.order_by('-date')
-  return render(request, 'items/popular_index.html', { 'popular_items': popular_items })
+  for item in popular_items:
+    expiration = item.date + timedelta(days=3)
+    current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
+  return render(request, 'items/popular_index.html', { 'popular_items': popular_items, 'expiration': expiration, 'current_bid': current_bid })
 
 class ItemCreate(LoginRequiredMixin, CreateView):
   model = Item
@@ -75,12 +82,14 @@ class ItemUpdate(LoginRequiredMixin, UpdateView):
 
 def items_detail(request, item_id):
   item = Item.objects.get(id=item_id)
+  expiration = item.date + timedelta(days=3)
   bid_form = BidForm()
   current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
   return render(request, 'items/detail.html',  {
     'item': item,
     'bid_form': bid_form,
-    'current_bid': current_bid
+    'current_bid': current_bid,
+    'expiration': expiration
      })
 
 @login_required

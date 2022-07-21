@@ -14,9 +14,10 @@
       {% endfor %}
       <p>Posted By: {{ item.user }}</p>
       <p>Quantity: {{ item.quantity }}</p>
-      <p>Description: {{ item.description }}</p>
       <p>Posted: {{ item.date }}</p>
-      <p> Starting Bid: {{ item.min_bid }}</p>
+      <p>Expires on: {{ expiration }}</p>
+      <p>Starting Bid: {{ item.min_bid }}</p>
+      <p>Current Bid: {{ current_bid }}</p>
      </div>
     </a>
   </div>

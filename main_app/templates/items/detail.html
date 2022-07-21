@@ -17,14 +17,19 @@
           </div>
             {% endfor %}
             <p>Posted on: {{ item.date }}</p>
+            <p>Expires on {{ expiration }} </p>
             <p>Starting Bid: ${{ item.min_bid }}</p>
             <p>Quantity: {{ item.quantity }}</p>
-            <p>Description: {{ item.description|linebreaks }}</p>
+            <p>Description: {{ item.description }}</p>
+            {% if current_bid %}
             <p>Highest Bid: {{ current_bid }}</p>
+            {% else %}
+            <p>No Bids Yet</p>
+            {% endif %}
           </div>
           {% if item.user == user %}
           {% else %}
-          <div class="col s6">
+          <div class="col s6 bid-section">
             <form action="{% url 'add_bid' item.id %}" method="POST">
               {% csrf_token %}
               {{ bid_form.as_p }}

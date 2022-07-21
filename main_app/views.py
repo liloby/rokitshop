@@ -78,19 +78,13 @@ def signup(request):
 
 def items_index(request):
   items = Item.objects.all()
-  for item in items:
-    expiration = item.date + timedelta(days=3)
-    current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
-    print(current_bid)
-  return render(request, 'items/index.html', { 'items': items, 'expiration': expiration, 'current_bid': current_bid })
+
+  return render(request, 'items/index.html', { 'items': items })
 
 def popular_index(request):
   # Need to tweak this to filter out popular items
   popular_items = Item.objects.order_by('-date')
-  for item in popular_items:
-    current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
-    expiration = item.date + timedelta(days=3)
-  return render(request, 'items/popular_index.html', { 'popular_items': popular_items, 'expiration': expiration, 'current_bid': current_bid })
+  return render(request, 'items/popular_index.html', { 'popular_items': popular_items })
 
 class ItemCreate(LoginRequiredMixin, CreateView):
   model = Item
@@ -111,18 +105,14 @@ def items_detail(request, item_id):
   item = Item.objects.get(id=item_id)
   today = timezone.now().date()
   expiration = item.date + timedelta(days=3)
-  if (today >= expiration):
-    item.expired = True
-    print(item.expired)
-  else:
-    item.expired = False
   bid_form = BidForm()
   current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
   return render(request, 'items/detail.html',  {
     'item': item,
     'bid_form': bid_form,
     'current_bid': current_bid,
-    'expiration': expiration
+    'expiration': expiration,
+    'today': today
      })
 
 @login_required

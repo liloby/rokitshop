@@ -4,9 +4,12 @@
     <h1 class="center">Item Details</h1>
         <div class="card item-detail-card center">
           <div class="card-content item-detail-content">
+            {% if today >= expiration %}
+            <h2 class="center white-text red">ITEM PURCHASED</h2>
+            {% endif %}
             <span class="card-title">{{ item.name }}</span>
             {% for photo in item.photo_set.all %}
-            <img width="500px" class="responsive-img card-panel" src="{{photo.url}}">
+            <img class="responsive-img card-panel item-detail-pic" src="{{photo.url}}">
             {% empty %}
             <div class="card-panel teal-text center-align">No Photo Uploaded
             <form action="{% url 'add_photo' item.id %}" enctype="multipart/form-data" method="POST" alt="Item Photo" class="card-panel">
@@ -20,23 +23,20 @@
 
             <p>Seller: {{ item.user | capfirst }}</p>
             <p>Posted on {{ item.date }}</p>
-            {% if item.expired == True %}
-            <p>Expired on {{ expiration }} </p>
-            {% else %}
             <p>Expires on {{ expiration }} </p>
-            {% endif %}
             {% endif %}
             <p>Starting Bid: ${{ item.min_bid }}</p>
             <p>Quantity: {{ item.quantity }}</p>
             <p>Description: {{ item.description }}</p>
             {% if current_bid %}
-            <p>Highest Bid: {{ current_bid }}</p>
+            <p>Highest Bid: ${{ current_bid }}</p>
             {% else %}
             <p>No Bids Yet</p>
             {% endif %}
           </div>
           {% if item.user == user %}
           {% else %}
+          {% if today <= expiration %}
           <div class="col s6 bid-section">
             <form action="{% url 'add_bid' item.id %}" method="POST">
               {% csrf_token %}
@@ -47,6 +47,7 @@
                 {% else %}
                 <input type="submit" class="btn" value="Add Bid Higher than ${{ item.min_bid }}">
                 {% endif %}
+              {% endif %}
 
               </div>
             </form>

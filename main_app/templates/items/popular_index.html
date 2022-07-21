@@ -15,7 +15,6 @@
       <p>Seller: {{ item.user | capfirst }}</p>
       <p>Quantity: {{ item.quantity }}</p>
       <p>Posted on {{ item.date }}</p>
-      <p>Expires on {{ expiration }}</p>
       <p>Starting Bid: ${{ item.min_bid }}</p>
       {% if current_bid %}
       <p>Current Bid: ${{ current_bid }}</p>

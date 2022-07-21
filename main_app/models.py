@@ -15,7 +15,6 @@ class Item(models.Model):
     posted = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     min_bid = models.PositiveIntegerField()
-    expired = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

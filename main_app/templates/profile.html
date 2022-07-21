@@ -16,6 +16,13 @@
         </form>
     </div>
         {% endfor %}
+        {% for photo in user.userphoto_set.all %}
+        <form action="{% url 'delete_user_photo' user.id  %}" method="POST" class="card-panel"> 
+         {% csrf_token %}
+         <input type="submit" class="btn" value="Delete Photo">
+         {% endfor %}
+        </form> 
+
         {% comment %} <div>Member Since: {{ user.profile.signup_date|date:"M d, Y" }}</div> {% endcomment %}
         <div>Member Since: {{ user.date_joined|date:"M d, Y" }}</div>
         {% if item_listed.count >= 5%}

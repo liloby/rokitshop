@@ -3,13 +3,21 @@
 <h1 class="center">Profile</h1>
 <div class="online">ONLINE ● </div>
 <div class="profile-container">
+  <div class="change-pic">
+    {% for photo in user.userphoto_set.all %}
+    <form action="{% url 'delete_user_photo' user.id  %}" method="POST" class="card-panel"> 
+    {% csrf_token %}
+    <input type="submit" class="btn" value="Change Profile Photo">
+    {% endfor %}
+    </form> 
+  </div>
 <div>
     <div class="userinfo-box">
         <div>{{ user | capfirst }}</div><br>
         {% for photo in user.userphoto_set.all %}
          <img class="responsive-img card-panel profile-pic" src="{{photo.url}}" />
         {% empty %}
-        <div class="card-panel teal-text center-align">No Profile Pic Uploaded
+        <div class="card-panel white-text center-align photo-upload">No Profile Pic Uploaded
         <form action="{% url 'add_user_photo' user.id %}" enctype="multipart/form-data" method="POST" alt="User UserPhoto" class="card-panel">
             {% csrf_token %}
             <input type="file" name="photo-file">
@@ -17,22 +25,16 @@
         </form>
         {% endfor %}
 
-        {% for photo in user.userphoto_set.all %}
-        <form action="{% url 'delete_user_photo' user.id  %}" method="POST" class="card-panel"> 
-         {% csrf_token %}
-         <input type="submit" class="btn" value="Delete Photo">
-         {% endfor %}
-        </form> 
         {% comment %} <div>Member Since: {{ user.profile.signup_date|date:"M d, Y" }}</div> {% endcomment %}
-        <div>Member Since: {{ user.date_joined|date:"M d, Y" }}</div>
-        {% if item_listed.count >= 5 %}
-        <p>Achievements: </p>
-        <div>Rookie Seller <i class="fa-solid fa-egg"></i></div>
-        {% if item_listed.count >= 10 %}
-        <div>Advanced Seller <i class="fa-solid fa-thumbs-up"></i></div>
+        <div class="white-text">Member Since: {{ user.date_joined|date:"M d, Y" }}</div>
+        {% if item_listed.count >= 1 %}
+        <p class="white-text">Achievements: </p>
+        <div class="yellow darken-2 white-text">Rookie Seller <i class="fa-solid fa-egg"></i></div>
+        {% if item_listed.count >= 2 %}
+        <div class="blue white-text">Advanced Seller <i class="fa-solid fa-thumbs-up"></i></div>
         {% endif %}
-        {% if item_listed.count >= 20 %}
-        <div>Elite Seller <i class="fa-solid fa-rocket"></i></div>
+        {% if item_listed.count >= 3 %}
+        <div class="purple white-text">Elite Seller <i class="fa-solid fa-rocket"></i></div>
         {% endif %}
         {% endif %}
         <br>

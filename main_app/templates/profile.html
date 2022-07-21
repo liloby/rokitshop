@@ -1,13 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
 <h1 class="center">Profile</h1>
+<div class="online">ONLINE ● </div>
 <div class="profile-container">
 <div>
   <div class="userinfo-box">
-    <div>{{ user | capfirst }}</div>
+    <div class="user-text">{{ user | capfirst }}</div>
     <br />
     {% for photo in user.userphoto_set.all %}
-    <img width="300px" class="responsive-img card-panel" src="{{photo.url}}" />
+    <img class="responsive-img card-panel profile-pic" src="{{photo.url}}" />
     {% empty %}
     <div class="card-panel teal-text center-align">
       No Profile Pic Uploaded
@@ -86,7 +87,7 @@
             <div class="card-action">
               <form action="{% url 'unlisted_update' item.id %}">
                 {% csrf_token %}
-                <button type="submit" class="btn update-btn">Update</button>
+                <button type="submit" class="btn update-btn">Edit</button>
               </form>
             </div>
             <div class="card-action">

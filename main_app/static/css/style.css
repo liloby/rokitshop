@@ -195,8 +195,31 @@ h1 {
     transition: 250ms ease-in;
 }
 
-.item-detail-card {
+.item-detail-card, .item-detail-content {
     background: linear-gradient(180deg, rgba(78, 78, 159, 0.7), rgba(144, 188, 203, 0.85));
+}
+
+tbody tr th label {
+    color: rgb(0, 0, 0);
+    font-size: 1.3rem;
+}
+
+td #id_name {
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+td #id_description {
+    border: 1px solid black;
+}
+
+td #id_quantity, td #id_min_bid {
+    background: white;
+    border-radius: 20%;
+    border: 1px solid black;
+}
+
+td #id_quantity:focus, td #id_min_bid:focus {
+    border: 1px solid #003cff;
 }
 
 .home-container {
@@ -252,9 +275,14 @@ input[type=number]:not(.browser-default) {
     border: 1px solid #000000;
     background-color: rgb(190, 210, 249);
     width: 6.5%;
+    height: 2.2rem;
     text-align: center;
     font-size: 1.2rem;
     box-shadow: 2px 2px 5px rgba(48, 0, 108, 0.16);
+}
+
+input[type=number]:not(.browser-default):focus {
+    border: 1px solid blue;
 }
 
 .move-up-btn {
@@ -299,6 +327,25 @@ input[type=number]:not(.browser-default) {
 
 .bid-table {
     background: linear-gradient(180deg, rgb(0 40 255 / 35%), rgb(255 255 255 / 35%))
+}
+
+.profile-pic {
+    min-width: 200px;
+    min-height: 250px;
+    max-height: 250px;
+    border-radius: 50%;
+    border: 2px solid rgb(0, 255, 0);
+}
+
+.user-text{
+    font-size: 2rem;
+}
+
+.online {
+    color: #1dff00;
+    position: absolute;
+    margin-top: 1rem;
+    margin-left: 1rem;
 }
 
 @keyframes eyecatch {

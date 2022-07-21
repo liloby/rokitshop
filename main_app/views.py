@@ -13,6 +13,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.db.models import Max
+from django.utils import timezone
 import uuid
 import boto3
 import os
@@ -108,10 +109,15 @@ class ItemUpdate(LoginRequiredMixin, UpdateView):
 
 def items_detail(request, item_id):
   item = Item.objects.get(id=item_id)
+  today = timezone.now().date()
   expiration = item.date + timedelta(days=3)
+  if (today >= expiration):
+    item.expired = True
+    print(item.expired)
+  else:
+    item.expired = False
   bid_form = BidForm()
   current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
-  print(current_bid)
   return render(request, 'items/detail.html',  {
     'item': item,
     'bid_form': bid_form,

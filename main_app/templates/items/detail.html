@@ -16,11 +16,15 @@
             </form>
           </div>
             {% endfor %}
-            {% if item.posted == True%}
+            {% if item.posted == True %}
 
             <p>Seller: {{ item.user | capfirst }}</p>
             <p>Posted on {{ item.date }}</p>
+            {% if item.expired == True %}
+            <p>Expired on {{ expiration }} </p>
+            {% else %}
             <p>Expires on {{ expiration }} </p>
+            {% endif %}
             {% endif %}
             <p>Starting Bid: ${{ item.min_bid }}</p>
             <p>Quantity: {{ item.quantity }}</p>

@@ -29,8 +29,8 @@ def profile(request):
   items = Item.objects.all()
   for item in items:
     current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
-  item_listed = Item.objects.all().filter(posted=True).filter(user=request.user)
-  item_unlisted = Item.objects.all().filter(posted=False).filter(user=request.user)
+    item_listed = Item.objects.all().filter(posted=True).filter(user=request.user)
+    item_unlisted = Item.objects.all().filter(posted=False).filter(user=request.user)
   return render(request, 'profile.html', {'item_listed':  item_listed,
     'item_unlisted': item_unlisted, 'current_bid': current_bid })
 

@@ -376,3 +376,14 @@ input[type=number]:not(.browser-default):focus {
         font-size: 2.5rem;
     }
 }
+
+.about-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: teal;
+    background-color: white;
+    line-height: 50px;
+    height: 50px;
+    font-size: 50;
+}

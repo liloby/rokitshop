@@ -1,14 +1,16 @@
-# Rokitshop
+# RokitShop
 
 This app is a come one come all website where users can sign up to sell and bid on items (or services) from all over the world. 
 
+![Rokitshop](https://user-images.githubusercontent.com/103070722/180294390-e7ec806e-6a06-4b8a-bd52-cf1373628dbd.png)
+
 ## Technologies Used
 
-Rokitshop was developed with Python, Django, CSS, HTML, SQL, Amazon S3, and deployed on Heroku.
+RokitShop was developed with Python, Django, CSS, HTML, SQL, Amazon S3, and deployed on Heroku.
 
 ## Getting Started
 
-1. Click the link to launch the app: 
+1. Click the link to launch the app: https://rokitshop.herokuapp.com/
 2. Click on "Sign Up" in the top right of the page.
 3. Create a Username and Password. You will be logged in after you complete the signup.
 4. Click on "Sell an Item" to create an item to sell.

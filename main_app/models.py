@@ -16,7 +16,6 @@ class Item(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     min_bid = models.PositiveIntegerField()
     expired = models.BooleanField(default=False)
-    expiration = models.DateField()
 
     def __str__(self):
         return self.name

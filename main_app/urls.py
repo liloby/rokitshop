@@ -17,4 +17,5 @@ urlpatterns = [
     path('items/<int:item_id>/add_bid/', views.add_bid, name='add_bid'),
     path('items/<int:item_id>/add_photo/', views.add_photo, name='add_photo'),
     path('profile/<int:user_id>/add_user_photo/', views.add_user_photo, name='add_user_photo'),
+    path('profile/<int:user_id>/delete_user_photo/', views.delete_user_photo, name='delete_user_photo'),
    ]

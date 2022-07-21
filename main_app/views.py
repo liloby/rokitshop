@@ -143,3 +143,8 @@ def add_user_photo(request, user_id):
             print('An error occurred uploading file to S3')
             print(e)
     return redirect('profile')
+  
+@login_required
+def delete_user_photo(request, user_id):
+  User.objects.get(id=user_id).userphoto_set.all().delete()
+  return redirect('profile')

@@ -16,15 +16,24 @@
             </form>
           </div>
             {% endfor %}
-            <p>Posted on: {{ item.date }}</p>
+            {% if item.posted == True%}
+
+            <p>Seller: {{ item.user | capfirst }}</p>
+            <p>Posted on {{ item.date }}</p>
+            <p>Expires on {{ expiration }} </p>
+            {% endif %}
             <p>Starting Bid: ${{ item.min_bid }}</p>
             <p>Quantity: {{ item.quantity }}</p>
-            <p>Description: {{ item.description|linebreaks }}</p>
+            <p>Description: {{ item.description }}</p>
+            {% if current_bid %}
             <p>Highest Bid: {{ current_bid }}</p>
+            {% else %}
+            <p>No Bids Yet</p>
+            {% endif %}
           </div>
           {% if item.user == user %}
           {% else %}
-          <div class="col s6">
+          <div class="col s6 bid-section">
             <form action="{% url 'add_bid' item.id %}" method="POST">
               {% csrf_token %}
               {{ bid_form.as_p }}
@@ -38,7 +47,7 @@
               </div>
             </form>
             {% endif %}
-            <table class="striped blue-grey lighten-3">
+            <table class="striped blue-grey lighten-3 bid-table">
               <thead>
                 <tr><th>Date:</th><th>Current Bid:</th><th>User:</th></tr>
               </thead>
@@ -47,7 +56,7 @@
                 <tr>
                   <td>{{bid.date}}</td>
                   <td>{{bid.current_bid}}</td>
-                  <td>{{ bid.user }}</td>
+                  <td>{{ bid.user | capfirst }}</td>
                 </tr>
                 {% endfor %}
               </tbody>

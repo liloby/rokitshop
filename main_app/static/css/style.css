@@ -11,6 +11,14 @@ body {
     animation: launch 12s infinite;
 }
 
+.unlisted-img, .listed-img {
+    width: 200px;
+    min-height: 200px;
+    max-height: 200px;
+    border-radius: 10%;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.1);
+}
+
 @keyframes launch {
     0% {
         opacity: 0%;
@@ -122,6 +130,7 @@ h1 {
     border: 1px solid rgb(255, 255, 255);
     border-radius: 40% 10%;
     margin-top: 1rem;
+    line-height: .5rem;
     background: linear-gradient(200deg, rgba(196, 0, 235, 0.3), rgba(0, 242, 255, 0.3));
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.201);
     transition: 500ms ease-out;
@@ -149,6 +158,10 @@ h1 {
     background: linear-gradient(180deg, rgba(110, 110, 110, 0.35), rgba(110, 110, 110, 0.35));
 }
 
+.profile-unlisted-item:hover {
+    background: linear-gradient(180deg, rgba(176, 176, 176, 0.35), rgba(164, 164, 164, 0.35));
+}
+
 .profile-unlisted-item-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -171,19 +184,42 @@ h1 {
 }
 
 .card-content {
-    color: white;
+    color: rgb(255, 255, 255);
     border: 1px solid rgba(255, 255, 255, 0);
     transition: 250ms ease-out;
 }
 
 .card-content-hover:hover {
-    color: rgb(255, 213, 0);
-    border: 1px solid white;;
+    color: rgb(250, 246, 143);
+    border: 1px solid white;
     transition: 250ms ease-in;
 }
 
-.item-detail-card {
+.item-detail-card, .item-detail-content {
     background: linear-gradient(180deg, rgba(78, 78, 159, 0.7), rgba(144, 188, 203, 0.85));
+}
+
+tbody tr th label {
+    color: rgb(0, 0, 0);
+    font-size: 1.3rem;
+}
+
+td #id_name {
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+td #id_description {
+    border: 1px solid black;
+}
+
+td #id_quantity, td #id_min_bid {
+    background: white;
+    border-radius: 20%;
+    border: 1px solid black;
+}
+
+td #id_quantity:focus, td #id_min_bid:focus {
+    border: 1px solid #003cff;
 }
 
 .home-container {
@@ -221,7 +257,7 @@ ul li, p span {
 }
 
 .purple-border {
-    box-shadow: 5px 5px 10px rgba(115, 0, 255, 0.267);
+    box-shadow: 5px 5px 5px rgba(115, 0, 255, 0.15);
 }
 
 .btn-container {
@@ -236,12 +272,80 @@ p label {
 }
 
 input[type=number]:not(.browser-default) {
-    border-bottom: 1px solid #000000;
-    width: 8%;
+    border: 1px solid #000000;
+    background-color: rgb(190, 210, 249);
+    width: 6.5%;
+    height: 2.2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    box-shadow: 2px 2px 5px rgba(48, 0, 108, 0.16);
+}
+
+input[type=number]:not(.browser-default):focus {
+    border: 1px solid blue;
 }
 
 .move-up-btn {
     transform: translate(0%, -35%);
+}
+
+.bid-section form p label {
+    font-weight: bold;
+
+}
+
+.delete-btn {
+    color: rgb(182, 0, 0);
+    width: 90%;
+}
+
+.post-btn {
+    width: 90%;
+    text-align: center;
+}
+
+.update-btn {
+    color: rgb(0, 0, 0);
+    width: 90%;
+}
+
+.all-items {
+    width: 300px;
+    min-height: 300px;
+    max-height: 300px;
+    border-radius: 10%;
+    box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.1);
+    border: 1px solid white;
+    transition: 1000ms;
+}
+
+.all-items:hover {
+    transition: 1000ms;
+    border-radius: 25%;
+    border: 1px solid rgb(255, 225, 0);
+}
+
+.bid-table {
+    background: linear-gradient(180deg, rgb(0 40 255 / 35%), rgb(255 255 255 / 35%))
+}
+
+.profile-pic {
+    min-width: 200px;
+    min-height: 250px;
+    max-height: 250px;
+    border-radius: 50%;
+    border: 2px solid rgb(0, 255, 0);
+}
+
+.user-text{
+    font-size: 2rem;
+}
+
+.online {
+    color: #1dff00;
+    position: absolute;
+    margin-top: 1rem;
+    margin-left: 1rem;
 }
 
 @keyframes eyecatch {

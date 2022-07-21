@@ -8,6 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from .models import Item, Bid, Photo, UserPhoto
 from .forms import BidForm
+from datetime import datetime, timedelta
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -47,10 +48,13 @@ def about(request):
 
 @login_required
 def profile(request):
-  item_listed = Item.objects.all().filter(posted=True).filter(user=request.user)
-  item_unlisted = Item.objects.all().filter(posted=False).filter(user=request.user)
+  items = Item.objects.all()
+  for item in items:
+    current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
+    item_listed = Item.objects.all().filter(posted=True).filter(user=request.user)
+    item_unlisted = Item.objects.all().filter(posted=False).filter(user=request.user)
   return render(request, 'profile.html', {'item_listed':  item_listed,
-    'item_unlisted': item_unlisted})
+    'item_unlisted': item_unlisted, 'current_bid': current_bid })
 
 def signup(request):
   error_message = ''
@@ -73,16 +77,23 @@ def signup(request):
 
 def items_index(request):
   items = Item.objects.all()
-  return render(request, 'items/index.html', { 'items': items })
+  for item in items:
+    expiration = item.date + timedelta(days=3)
+    current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
+    print(current_bid)
+  return render(request, 'items/index.html', { 'items': items, 'expiration': expiration, 'current_bid': current_bid })
 
 def popular_index(request):
   # Need to tweak this to filter out popular items
   popular_items = Item.objects.order_by('-date')
-  return render(request, 'items/popular_index.html', { 'popular_items': popular_items })
+  for item in popular_items:
+    current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
+    expiration = item.date + timedelta(days=3)
+  return render(request, 'items/popular_index.html', { 'popular_items': popular_items, 'expiration': expiration, 'current_bid': current_bid })
 
 class ItemCreate(LoginRequiredMixin, CreateView):
   model = Item
-  fields = ['name', 'quantity', 'description', 'min_bid']
+  fields = ['name', 'quantity', 'min_bid', 'description']
   def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
@@ -97,18 +108,22 @@ class ItemUpdate(LoginRequiredMixin, UpdateView):
 
 def items_detail(request, item_id):
   item = Item.objects.get(id=item_id)
+  expiration = item.date + timedelta(days=3)
   bid_form = BidForm()
   current_bid = item.bid_set.all().aggregate(Max('current_bid'))['current_bid__max']
+  print(current_bid)
   return render(request, 'items/detail.html',  {
     'item': item,
     'bid_form': bid_form,
-    'current_bid': current_bid
+    'current_bid': current_bid,
+    'expiration': expiration
      })
 
 @login_required
 def add_post(request, item_id):
   item = Item.objects.get(id=item_id)
   print(request, item)
+  item.date = datetime.now()
   item.posted = True
   item.save()
   return redirect('profile')

@@ -416,6 +416,7 @@ input[type=text]:not(.browser-default), input[type=password]:not(.browser-defaul
 
 .item-detail-pic {
     min-width: 400px;
+    max-width: 400px;
     min-height: 500px;
     max-height: 500px;
     border-radius: 10%;

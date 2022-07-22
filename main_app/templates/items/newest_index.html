@@ -3,7 +3,7 @@
 
 <h1 class="center">Newest Items</h1>
 <div class="items-container">
-{% for item in popular_items %}
+{% for item in newest_items %}
 {% if item.posted == True %}
   <div class="card item-card">
    <a href="{% url 'detail' item.id %}">

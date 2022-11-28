@@ -40,4 +40,4 @@ Wireframe: https://www.figma.com/file/gBFAJ6B1ebfwyKkjOuqObm/Project-3-Wireframe
 4. Add a "Popular Items" or "Most Bidded On" page.
 5. Display the top 3 "Hot" items on the home page.
 6. Allow users to view other users profiles.
-7. Add seller and buyer reviews.
+7. Add seller and buyer reviews.# RokitShopApp

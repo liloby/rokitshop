@@ -3,8 +3,8 @@
 This app is a come one come all website where users can sign up to sell and bid on items (or services) from all over the world. 
 
 ## Team Members (Scrum Agile)
-#### Oby Li - Scrum Master & Designer
-#### Rachel Ajebon - GitHub Manager
+#### Oby Li - Scrum Master & Front-End Developer
+#### Rachel Ajebon - GitHub Manager & Back-End Developer
 #### Kiefer Irvine - Database Manager & Documenter
 
 ![Rokitshop](https://user-images.githubusercontent.com/103070722/180294390-e7ec806e-6a06-4b8a-bd52-cf1373628dbd.png)

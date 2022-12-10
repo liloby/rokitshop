@@ -14,7 +14,7 @@ This app is a come one come all website where users can sign up to sell and bid 
 
 ## Technologies Used
 
-RokitShop was developed with Python, Django, CSS, HTML, PostgresSQL, Amazon S3, and deployed on Heroku.
+RokitShop was developed with Python, Django, CSS, HTML, PostgreSQL, Amazon S3 (AWS), and deployed on Heroku.
 
 ## App Preparation Tools
 
